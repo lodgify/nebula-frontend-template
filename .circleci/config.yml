@@ -54,12 +54,10 @@ jobs:
           name: Build
           command: |
             yarn build
-            yarn build:types
       - persist_to_workspace:
           root: .
           paths:
             - build
-            - types
 
   deploy:
     executor: nebula-executor
