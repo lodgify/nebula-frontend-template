@@ -1,5 +1,6 @@
-import styled from "styled-components";
-import { NebulaBackground } from "./animated-background.style";
+import styled from 'styled-components';
+
+import { NebulaBackground } from './animated-background.style';
 
 export const PageContainer = styled.div`
   height: 100vh;

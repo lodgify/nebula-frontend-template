@@ -17,6 +17,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "lint": "yarn lint:js",
+    "lint:js": "tslint -p . -c tslint.json --format codeFrame",
     "semantic-release": "semantic-release"
   },
   "eslintConfig": {
@@ -36,7 +38,13 @@
   },
   "devDependencies": {
     "@types/styled-components": "^4.1.19",
+    "jest-junit": "^8.0.0",
+    "prettier": "^1.18.2",
     "semantic-release": "^15.13.24",
-    "styled-components": "^4.3.2"
+    "styled-components": "^4.3.2",
+    "tslint": "^5.20.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-immutable": "^6.0.1",
+    "tslint-plugin-prettier": "^2.0.1"
   }
 }
