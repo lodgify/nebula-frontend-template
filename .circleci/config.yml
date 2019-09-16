@@ -67,9 +67,6 @@ jobs:
       - attach_workspace:
           at: .
       - run:
-          name: Generate package
-          command: yarn generate
-      - run:
           name: Deploy
           command: yarn semantic-release
 

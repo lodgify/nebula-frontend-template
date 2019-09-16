@@ -17,7 +17,6 @@
     "build": "react-scripts build",
     "build:types": "tsc --declaration --outDir types --emitDeclarationOnly",
     "test": "react-scripts test",
-    "generate": "node src",
     "eject": "react-scripts eject",
     "lint": "yarn lint:js",
     "lint:js": "tslint -p . -c tslint.json --format codeFrame",
