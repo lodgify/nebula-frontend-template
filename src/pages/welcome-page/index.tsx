@@ -10,7 +10,12 @@ const WelcomePage: React.FC = () => {
   return (
     <PageContainer>
       <LogoHero>
-        <a href={GITHUB_URL} target="_blank" aria-label="Go to the official GitHub page!">
+        <a
+          href={GITHUB_URL}
+          target="_blank"
+          aria-label="Go to the official GitHub page!"
+          rel="noopener noreferrer"
+        >
           <Logo className={Logo} src={NebulaImg} />
         </a>
       </LogoHero>

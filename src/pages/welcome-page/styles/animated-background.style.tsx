@@ -1,5 +1,3 @@
-import styled from 'styled-components';
-
 export const NebulaBackground = `
 background: linear-gradient(270deg, #5047ec, #34043c);
 background-size: 400% 400%;
