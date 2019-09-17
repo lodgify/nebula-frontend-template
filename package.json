@@ -1,6 +1,13 @@
 {
   "name": "@lodgify/nebula-frontend-template",
   "version": "0.1.0",
+  "license": "UNLICENSED",
+  "main": "build/static/js/main.*.js",
+  "types": "types/src/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lodgify/nebula-frontend-template"
+  },
   "dependencies": {
     "@types/jest": "24.0.18",
     "@types/node": "12.7.5",

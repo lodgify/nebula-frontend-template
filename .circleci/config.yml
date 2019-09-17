@@ -65,9 +65,7 @@ jobs:
           at: ~/
       - run:
           name: Deploy
-          command: |
-            echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
-            yarn semantic-release
+          command: yarn semantic-release
 
 workflows:
   version: 2
