@@ -37,7 +37,7 @@
     "eslint-plugin-react-hooks": "^1.6.1",
     "file-loader": "3.0.1",
     "fs-extra": "7.0.1",
-    "html-webpack-plugin": "4.0.0-beta.5",
+    "html-webpack-plugin": "^3.2.0",
     "identity-obj-proxy": "3.0.0",
     "is-wsl": "^1.1.0",
     "jest": "24.8.0",
@@ -71,13 +71,13 @@
     "workbox-webpack-plugin": "4.3.1"
   },
   "scripts": {
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
     "build:types": "tsc --declaration --outDir types --emitDeclarationOnly",
-    "test": "node scripts/test.js",
-    "lint": "yarn lint:js",
+    "build": "webpack --config ./config/webpack.config.js",
+    "dev": "webpack-dev-server --config ./config/webpack.config.dev.js --mode development --open --hot",
     "lint:js": "tslint -p . -c tslint.json --format codeFrame",
-    "semantic-release": "semantic-release"
+    "lint": "yarn lint:js",
+    "semantic-release": "semantic-release",
+    "test": "node scripts/test.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -95,16 +95,21 @@
     ]
   },
   "devDependencies": {
+    "@lodgify/quarks": "^37.6.0",
     "@types/styled-components": "^4.1.19",
+    "awesome-typescript-loader": "^5.2.1",
     "jest-junit": "^8.0.0",
     "prettier": "^1.18.2",
     "semantic-release": "^16.0.0-beta.24",
+    "source-map-loader": "^0.2.4",
     "styled-components": "^4.3.2",
-    "@lodgify/quarks": "^37.6.0",
     "tslint": "^5.20.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-immutable": "^6.0.1",
-    "tslint-plugin-prettier": "^2.0.1"
+    "tslint-plugin-prettier": "^2.0.1",
+    "webpack-bundle-analyzer": "^3.5.0",
+    "webpack-cli": "3.3.0",
+    "webpack-node-externals": "^1.7.2"
   },
   "jest": {
     "roots": [
