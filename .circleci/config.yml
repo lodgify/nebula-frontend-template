@@ -68,7 +68,9 @@ jobs:
           at: .
       - run:
           name: Deploy
-          command: yarn semantic-release
+          command: |
+            yarn semantic-release
+            node ci/get-version > ~/version
 
 workflows:
   version: 2
