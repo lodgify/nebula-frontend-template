@@ -15,7 +15,7 @@ const mode = process.env.NODE_ENV;
 
 module.exports = {
   mode,
-  devtool: isDevMode ? 'cheap-source-map' : 'source-map',
+  devtool: 'source-map',
   target: 'node',
   module: {
     rules: [...jsLoader(), ...sassLoader(), ...otherFilesLoader(), ...svgLoader()],
@@ -23,6 +23,7 @@ module.exports = {
   output: {
     path: paths.build,
     filename: '[name].js',
+    library: 'nebula',
     libraryTarget: 'umd',
   },
   resolve: {

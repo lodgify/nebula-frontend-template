@@ -1,4 +1,4 @@
-/* eslint-disable no-console, require-jsdoc */
+/* eslint-disable strict */
 'use strict';
 
 const path = require('path');

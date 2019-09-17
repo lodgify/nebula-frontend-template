@@ -4,16 +4,13 @@ const chalk = require('chalk');
 
 const isDevServer = require('./isDevServer');
 
-if (
-  process.env.NODE_ENV !== 'development' &&
-  process.env.NODE_ENV !== 'production'
-) {
+console.log('MODE IS ', process.env.NODE_ENV);
+
+if (process.env.NODE_ENV !== 'development' && process.env.NODE_ENV !== 'production') {
   const defaultNodeEnv = isDevServer ? 'development' : 'production';
   const color = isDevServer ? chalk.yellow : chalk.green;
 
-  console.warn(
-    color(`NODE_ENV is not set. Will default to "${defaultNodeEnv}".`)
-  );
+  console.warn(color(`NODE_ENV is not set. Will default to "${defaultNodeEnv}".`));
 
   process.env.NODE_ENV = defaultNodeEnv;
 }
