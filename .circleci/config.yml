@@ -34,9 +34,8 @@ jobs:
   test:
     executor: nebula-executor
     steps:
-      - checkout
       - attach_workspace:
-          at: .
+          at: ~/
       - run:
           name: Test
           command: yarn test --maxWorkers 2 --ci --testResultsProcessor="jest-junit"
@@ -48,9 +47,8 @@ jobs:
   build:
     executor: nebula-executor
     steps:
-      - checkout
       - attach_workspace:
-          at: .
+          at: ~/
       - run:
           name: Build
           command: |
@@ -60,17 +58,14 @@ jobs:
           paths:
             - build
 
-  deploy:
+  semantic-release:
     executor: nebula-executor
     steps:
-      - checkout
       - attach_workspace:
-          at: .
+          at: ~/
       - run:
           name: Deploy
-          command: |
-            yarn semantic-release
-            node ci/get-version > ~/version
+          command: yarn semantic-release
 
 workflows:
   version: 2
@@ -84,7 +79,7 @@ workflows:
       - build:
           requires:
             - dependencies
-      - deploy:
+      - semantic-release:
           context: global
           requires:
             - dependencies
