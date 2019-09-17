@@ -81,7 +81,3 @@ workflows:
             - dependencies
       - semantic-release:
           context: global
-          requires:
-            - dependencies
-            - test
-            - build
