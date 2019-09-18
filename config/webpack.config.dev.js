@@ -1,4 +1,4 @@
-const path = require('path');
+const paths = require('./paths');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -9,7 +9,7 @@ module.exports = {
     extensions: ['.ts', '.tsx', '.js'],
   },
   output: {
-    path: path.join(__dirname, '../dist'),
+    path: paths.dev,
     filename: 'main.js',
   },
   module: {
@@ -23,7 +23,9 @@ module.exports = {
       {
         test: /\.(woff|ttf|otf|eot|png|jpg|ico|gif)$/,
         loader: 'file-loader',
-        options: { name: '[name].[ext]' },
+        options: {
+          name: 'assets/[name].[hash].[ext]',
+        },
       },
       {
         test: /\.(tsx?$|ts?$)/,
