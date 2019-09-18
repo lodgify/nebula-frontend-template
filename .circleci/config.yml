@@ -30,6 +30,7 @@ jobs:
           root: ~/
           paths:
             - repo
+            - .npmrc
 
   test:
     executor: nebula-executor
