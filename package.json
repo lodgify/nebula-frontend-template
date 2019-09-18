@@ -1,6 +1,6 @@
 {
   "name": "@lodgify/nebula-frontend-template",
-  "version": "0.1.5",
+  "version": "0.1.9",
   "main": "build/main.js",
   "types": "types/src/index.d.ts",
   "repository": {
@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build:types": "tsc --declaration --outDir types --emitDeclarationOnly",
-    "build": "webpack --config ./config/webpack.config.js --mode production",
+    "build": "rm -r build || true && webpack --config ./config/webpack.config.js --mode production",
     "dev": "webpack-dev-server --config ./config/webpack.config.dev.js --mode development --open --hot",
     "lint:js": "tslint -p . -c tslint.json --format codeFrame",
     "lint": "yarn lint:js",
@@ -100,7 +100,7 @@
     "awesome-typescript-loader": "^5.2.1",
     "jest-junit": "^8.0.0",
     "prettier": "^1.18.2",
-    "semantic-release": "^15.13.24",
+    "semantic-release": "^16.0.0-beta.24",
     "source-map-loader": "^0.2.4",
     "tslint": "^5.20.0",
     "tslint-config-prettier": "^1.18.0",

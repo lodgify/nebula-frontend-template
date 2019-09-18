@@ -1,0 +1,9 @@
+# Ignore everything
+*
+
+# Except package.json
+!/package.json
+
+# And files inside build/
+!*/
+!build/**/*
