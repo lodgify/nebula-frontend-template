@@ -79,7 +79,7 @@ workflows:
           requires:
             - dependencies
       - semantic-release:
-          context: testing
+          context: global
           requires:
             - dependencies
             - test
