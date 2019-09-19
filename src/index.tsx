@@ -6,6 +6,7 @@ import { Header } from './components/header';
 import { WelcomePage } from './pages/welcome-page';
 import { InfoPage } from './pages/info-page';
 import { GlobalStyle } from './styles/index.style';
+import Manifest from './manifest.json';
 
 export const NebulaBaseApp: React.FC = () => (
   <>
@@ -23,14 +24,22 @@ export const NebulaBaseInfo: React.FC = () => (
   </>
 );
 
-export const NebulaBaseRoutedApp: React.FC = () => (
-  <Router>
-    <Route path="/" exact component={NebulaBaseApp} />
-    <Route path="/info" component={NebulaBaseInfo} />
-  </Router>
+interface BaseRoute {
+  baseUrl?: string;
+}
+
+export const RouteContext = React.createContext({ baseUrl: '' });
+
+export const NebulaBaseRoutedApp: React.FC<BaseRoute> = ({ baseUrl = Manifest.short_name }) => (
+  <RouteContext.Provider value={{ baseUrl }}>
+    <Router>
+      <Route path={`/`} exact component={NebulaBaseApp} />
+      <Route path={`/${baseUrl}/`} exact component={NebulaBaseApp} />
+      <Route path={`/${baseUrl}/info`} component={NebulaBaseInfo} />
+    </Router>
+  </RouteContext.Provider>
 );
 
 if (process.env.NODE_ENV === 'development') {
-  console.log('Base');
   ReactDOM.render(<NebulaBaseRoutedApp />, document.getElementById('root'));
 }

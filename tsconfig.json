@@ -13,6 +13,7 @@
     "outDir": "build/",
     "preserveConstEnums": true,
     "removeComments": false,
+    "resolveJsonModule": true,
     "skipLibCheck": true,
     "sourceMap": true,
     "strictNullChecks": true,
