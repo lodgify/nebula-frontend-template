@@ -5,12 +5,16 @@ module.exports = {
   entry: './src/index.tsx',
   mode: 'development',
   devtool: 'cheap-source-map',
+  devServer: {
+    historyApiFallback: true,
+  },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
   },
   output: {
     path: paths.dev,
     filename: 'main.js',
+    publicPath: '/',
   },
   module: {
     rules: [

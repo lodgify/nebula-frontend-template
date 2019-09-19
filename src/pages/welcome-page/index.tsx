@@ -6,7 +6,7 @@ import { GITHUB_URL } from './constants';
 import { Logo, LogoHero, PageContainer, Title } from './styles/index.style';
 import { shinifyText } from './utils/index.util';
 
-const WelcomePage: React.FC = () => {
+export const WelcomePage: React.FC = () => {
   return (
     <PageContainer>
       <LogoHero>
@@ -23,5 +23,3 @@ const WelcomePage: React.FC = () => {
     </PageContainer>
   );
 };
-
-export default WelcomePage;
