@@ -30,7 +30,7 @@ jobs:
           root: ~/
           paths:
             - repo
-            .ssh/known_hosts
+            - .ssh/known_hosts
             - .npmrc
 
   test:
