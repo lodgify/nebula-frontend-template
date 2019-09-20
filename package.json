@@ -1,6 +1,6 @@
 {
   "name": "@lodgify/nebula-frontend-template",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "main": "build/main.js",
   "types": "types/src/index.d.ts",
   "repository": {

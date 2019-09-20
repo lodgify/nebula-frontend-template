@@ -28,16 +28,11 @@ interface BaseRoute {
   baseUrl?: string;
 }
 
-export const RouteContext = React.createContext({ baseUrl: '' });
-
 export const NebulaBaseRoutedApp: React.FC<BaseRoute> = ({ baseUrl = Manifest.short_name }) => (
-  <RouteContext.Provider value={{ baseUrl }}>
-    <Router>
-      <Route path={`/`} exact component={NebulaBaseApp} />
-      <Route path={`/${baseUrl}/`} exact component={NebulaBaseApp} />
-      <Route path={`/${baseUrl}/info`} component={NebulaBaseInfo} />
-    </Router>
-  </RouteContext.Provider>
+  <Router basename={baseUrl}>
+    <Route path={`/`} exact component={NebulaBaseApp} />
+    <Route path={`/info`} component={NebulaBaseInfo} />
+  </Router>
 );
 
 if (process.env.NODE_ENV === 'development') {
