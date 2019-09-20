@@ -1,19 +1,28 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
+import { RouteContext } from '../../index';
 
 import { HeaderElement, HeaderContainer, HeaderLink } from './styles/index.style';
 
-export const Header: React.FC = () => (
-  <HeaderContainer>
-    <HeaderElement>
-      <HeaderLink>
-        <Link to={`/`}>Home</Link>
-      </HeaderLink>
-    </HeaderElement>
-    <HeaderElement>
-      <HeaderLink>
-        <Link to={`/info/`}>Info</Link>
-      </HeaderLink>
-    </HeaderElement>
-  </HeaderContainer>
-);
+export const Header: React.FC = () => {
+  return (
+    <RouteContext.Consumer>
+      {({ baseUrl }) => {
+        return (
+          <HeaderContainer>
+            <HeaderElement>
+              <HeaderLink>
+                <a href={`/#/${baseUrl}/`}>Home</a>
+              </HeaderLink>
+            </HeaderElement>
+            <HeaderElement>
+              <HeaderLink>
+                <a href={`/#/${baseUrl}/info/`}>Info</a>
+              </HeaderLink>
+            </HeaderElement>
+          </HeaderContainer>
+        );
+      }}
+    </RouteContext.Consumer>
+  );
+};
