@@ -35,17 +35,12 @@ export const NebulaBaseInfo: React.FC = () => {
 };
 
 const moduleStore = createStore(configureStore);
+export let RouteContext = React.createContext({ baseUrl: '', store: moduleStore });
 
-export let RouteContext = React.createContext({ baseUrl: '', store: undefined });
-
-interface ConfigProps extends React.FunctionComponent {
-  store?: any;
-}
-
-const Config: React.FunctionComponent<ConfigProps> = props => {
+const Config: React.FunctionComponent = props => {
   return (
     <RouteContext.Consumer>
-      {({ store }) => <Provider store={store || moduleStore}>{props.children}</Provider>}
+      {({ store }) => <Provider store={store}>{props.children}</Provider>}
     </RouteContext.Consumer>
   );
 };
@@ -56,11 +51,24 @@ export const Routes = (store?: any) => {
   log(`Available route: /${Manifest.url_entry_point}/info`);
 
   const moduleRoute = `${Manifest.url_entry_point}`;
-  RouteContext = React.createContext({ baseUrl: `${Manifest.url_entry_point}`, store });
+  RouteContext = React.createContext({
+    baseUrl: `${Manifest.url_entry_point}`,
+    store: store || moduleStore,
+  });
   log(`Nebula Store is: ${store}`);
 
+  const storeToUse = (store: any) => {
+    if (store && process.env.NODE_ENV !== 'development') {
+      log(`Using APP store.`);
+      return store;
+    } else {
+      log(`Using MODULE store.`);
+      return moduleStore;
+    }
+  };
+
   return (
-    <RouteContext.Provider value={{ baseUrl: moduleRoute, store }}>
+    <RouteContext.Provider value={{ baseUrl: moduleRoute, store: storeToUse(store) }}>
       <Router>
         <Route component={Config}>
           {process.env.NODE_ENV === 'development' && <Route path="/" component={NebulaBaseApp} />}

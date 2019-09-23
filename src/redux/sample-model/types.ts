@@ -1,7 +1,7 @@
 export interface SampleItem {
+  id: number;
   title: string;
-  subtitle: string;
-  creationTimestamp: number;
+  completed: string;
 }
 
 export interface SampleState {
@@ -19,7 +19,7 @@ interface SetItemAction {
 interface RemoveItemAction {
   type: typeof REMOVE_ITEM;
   payload: {
-    creationTimestamp: number;
+    id: number;
   };
 }
 
