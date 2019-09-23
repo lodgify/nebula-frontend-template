@@ -1,6 +1,9 @@
 import React from 'react';
-// import * as ReactDOM from 'react-dom';
+import * as ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import { configureStore } from './redux/index';
 
 import { Header } from './components/header';
 import { WelcomePage } from './pages/welcome-page';
@@ -31,29 +34,36 @@ export const NebulaBaseInfo: React.FC = () => {
   );
 };
 
-// interface BaseRoute {
-//   baseUrl?: string;
-// }
+const moduleStore = createStore(configureStore);
 
-export let RouteContext = React.createContext({ baseUrl: '' });
+export let RouteContext = React.createContext({ baseUrl: '', store: undefined });
 
-const Config: React.FunctionComponent = props => {
-  RouteContext = React.createContext({ baseUrl: `${Manifest.url_entry_point}` });
+interface ConfigProps extends React.FunctionComponent {
+  store?: any;
+}
 
-  return <>{props.children}</>;
+const Config: React.FunctionComponent<ConfigProps> = props => {
+  return (
+    <RouteContext.Consumer>
+      {({ store }) => <Provider store={store || moduleStore}>{props.children}</Provider>}
+    </RouteContext.Consumer>
+  );
 };
 
-export const Routes = () => {
+export const Routes = (store?: any) => {
   log(`ULR is: ${window.location.href}`);
   log(`Available route: /${Manifest.url_entry_point}`);
   log(`Available route: /${Manifest.url_entry_point}/info`);
 
   const moduleRoute = `${Manifest.url_entry_point}`;
+  RouteContext = React.createContext({ baseUrl: `${Manifest.url_entry_point}`, store });
+  log(`Nebula Store is: ${store}`);
 
   return (
-    <RouteContext.Provider value={{ baseUrl: moduleRoute }}>
+    <RouteContext.Provider value={{ baseUrl: moduleRoute, store }}>
       <Router>
         <Route component={Config}>
+          {process.env.NODE_ENV === 'development' && <Route path="/" component={NebulaBaseApp} />}
           <Route path={moduleRoute} component={NebulaBaseApp} />
           <Route path={`${moduleRoute}/info`} component={NebulaBaseInfo} />
         </Route>
@@ -63,5 +73,5 @@ export const Routes = () => {
 };
 
 if (process.env.NODE_ENV === 'development') {
-  // ReactDOM.render(<NebulaBaseRoutedApp baseUrl="/poke" />, document.getElementById('root'));
+  ReactDOM.render(<Routes />, document.getElementById('root'));
 }
