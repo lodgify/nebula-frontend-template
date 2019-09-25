@@ -5,7 +5,6 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 require('./env');
 const paths = require('./paths');
-const isDevMode = require('./isDevMode');
 const sassLoader = require('./loaders/sass');
 const otherFilesLoader = require('./loaders/otherFiles');
 const jsLoader = require('./loaders/js');
@@ -30,7 +29,7 @@ module.exports = {
     modules: [paths.src, 'node_modules'],
     extensions: ['.ts', '.tsx', '.js', '.json'],
   },
-  externals: [nodeExternals({ whitelist: [/\.css/i] }), 'react', 'react-dom', '@lodgify/quarks'],
+  externals: [nodeExternals({ whitelist: [/\.css/i] }), 'react', 'react-dom'],
   plugins: [
     new MiniCssExtractPlugin({ filename: '[name].css' }),
     new webpack.EnvironmentPlugin({ ...process.env }),

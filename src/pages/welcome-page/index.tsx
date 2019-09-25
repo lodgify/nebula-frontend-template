@@ -29,6 +29,7 @@ export const WelcomePage: React.FC = () => {
       </Title>
       <Button
         onClick={() => dispatch({ type: 'increment' })}
+        style={{ width: '30%', alignSelf: 'center' }}
         type={Button.Type.Primary}
         theme={Button.Theme.Light}
       >

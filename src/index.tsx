@@ -12,6 +12,8 @@ import { GlobalStyle } from './styles/index.style';
 import { log } from './utils/logger.utils';
 import Manifest from './manifest.json';
 
+import '@lodgify/quarks/build/main.css';
+
 import { CountProvider } from './index.reducer';
 
 export const NebulaBaseApp: React.FC = () => {
