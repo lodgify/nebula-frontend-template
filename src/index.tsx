@@ -12,6 +12,8 @@ import { GlobalStyle } from './styles/index.style';
 import { log } from './utils/logger.utils';
 import Manifest from './manifest.json';
 
+import { CountProvider } from './index.reducer';
+
 export const NebulaBaseApp: React.FC = () => {
   log(`NEBULA BASE LANDING PAGE LOADED`);
   return (
@@ -40,7 +42,11 @@ export let RouteContext = React.createContext({ baseUrl: '', store: moduleStore 
 const Config: React.FunctionComponent = props => {
   return (
     <RouteContext.Consumer>
-      {({ store }) => <Provider store={store}>{props.children}</Provider>}
+      {({ store }) => (
+        <CountProvider>
+          <Provider store={store}>{props.children}</Provider>
+        </CountProvider>
+      )}
     </RouteContext.Consumer>
   );
 };

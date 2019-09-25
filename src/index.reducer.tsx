@@ -14,9 +14,9 @@ const reducer = (state: number, action: any) => {
   }
 };
 
-const CountContext = React.createContext<any>(1);
+export const CountContext = React.createContext<any>(1);
 
-const CountProvider: React.FC = ({ children }) => {
+export const CountProvider: React.FC = ({ children }) => {
   const contextValue = useReducer(reducer, initialState);
   return <CountContext.Provider value={contextValue}>{children}</CountContext.Provider>;
 };

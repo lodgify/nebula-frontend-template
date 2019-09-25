@@ -30,7 +30,7 @@ module.exports = {
     modules: [paths.src, 'node_modules'],
     extensions: ['.ts', '.tsx', '.js', '.json'],
   },
-  externals: [nodeExternals({ whitelist: [/\.css/i] }), 'react', 'react-dom'],
+  externals: [nodeExternals({ whitelist: [/\.css/i] }), 'react', 'react-dom', '@lodgify/quarks'],
   plugins: [
     new MiniCssExtractPlugin({ filename: '[name].css' }),
     new webpack.EnvironmentPlugin({ ...process.env }),

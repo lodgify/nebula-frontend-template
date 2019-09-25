@@ -1,6 +1,6 @@
 {
   "name": "@lodgify/nebula-frontend-template",
-  "version": "0.1.14",
+  "version": "0.1.16",
   "main": "build/main.js",
   "types": "types/src/index.d.ts",
   "repository": {
@@ -102,8 +102,10 @@
     "@types/react-redux": "^7.1.2",
     "@types/redux": "^3.6.0",
     "awesome-typescript-loader": "^5.2.1",
+    "emotion": "^10.0.17",
     "jest-junit": "^8.0.0",
     "prettier": "^1.18.2",
+    "@lodgify/quarks": "^37.8.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "semantic-release": "^16.0.0-beta.24",
@@ -170,6 +172,7 @@
     ]
   },
   "peerDependencies": {
+    "@lodgify/quarks": "^37.8.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
   }

@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Button } from '@lodgify/quarks';
+
 import NebulaImg from '../../assets/img/nebula.png';
 
 import { GITHUB_URL } from './constants';
 import { Logo, LogoHero, PageContainer, Title } from './styles/index.style';
 import { shinifyText } from './utils/index.util';
 
-import { Example05 } from './index.reducer';
+import { CountContext } from '../../index.reducer';
 
 export const WelcomePage: React.FC = () => {
+  const [count, dispatch] = useContext(CountContext);
+
   return (
     <PageContainer>
-      <Example05 />
       <LogoHero>
         <a
           href={GITHUB_URL}
@@ -21,7 +24,16 @@ export const WelcomePage: React.FC = () => {
           <Logo className={Logo} src={NebulaImg} />
         </a>
       </LogoHero>
-      <Title>{shinifyText('Welcome to the Nebula Front-End Template!')}</Title>
+      <Title>
+        {shinifyText(`Hey! Welcome to nebula! Can I get some clicks? Now I have ${count}`)}
+      </Title>
+      <Button
+        onClick={() => dispatch({ type: 'increment' })}
+        type={Button.Type.Primary}
+        theme={Button.Theme.Light}
+      >
+        +1
+      </Button>
     </PageContainer>
   );
 };

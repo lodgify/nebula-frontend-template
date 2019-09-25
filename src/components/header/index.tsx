@@ -11,14 +11,10 @@ export const Header: React.FC = () => {
         return (
           <HeaderContainer>
             <HeaderElement>
-              <HeaderLink>
-                <a href={`/#/${baseUrl}/`}>Home</a>
-              </HeaderLink>
+              <HeaderLink href={`/#/${baseUrl}/`}>Home</HeaderLink>
             </HeaderElement>
             <HeaderElement>
-              <HeaderLink>
-                <a href={`/#/${baseUrl}/info/`}>Info</a>
-              </HeaderLink>
+              <HeaderLink href={`/#/${baseUrl}/info/`}>Info</HeaderLink>
             </HeaderElement>
           </HeaderContainer>
         );
