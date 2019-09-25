@@ -1,5 +1,6 @@
-const paths = require('./paths');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const paths = require('./paths');
+const sassLoader = require('./loaders/sass');
 
 module.exports = {
   entry: './src/index.tsx',
@@ -23,6 +24,7 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
       },
+      ...sassLoader(),
       { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
       {
         test: /\.(woff|ttf|otf|eot|png|jpg|ico|gif)$/,

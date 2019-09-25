@@ -24,9 +24,8 @@ export const WelcomePage: React.FC = () => {
           <Logo className={Logo} src={NebulaImg} />
         </a>
       </LogoHero>
-      <Title>
-        {shinifyText(`Hey! Welcome to nebula! Can I get some clicks? Now I have ${count}`)}
-      </Title>
+      <Title>{shinifyText(`Hey! Welcome to nebula! Can I get some clicks? Now I have`)}</Title>
+      <p>{count}</p>
       <Button
         onClick={() => dispatch({ type: 'increment' })}
         style={{ width: '30%', alignSelf: 'center' }}

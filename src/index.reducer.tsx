@@ -34,7 +34,7 @@ const Counter = () => {
   );
 };
 
-export const Example05 = () => (
+export const Sample = () => (
   <>
     <CountProvider>
       <Counter />

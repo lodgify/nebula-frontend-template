@@ -1,24 +1,18 @@
 import React from 'react';
 
-import { RouteContext } from '../../index';
-
 import { HeaderElement, HeaderContainer, HeaderLink } from './styles/index.style';
+
+import { Routes } from '../../routes';
 
 export const Header: React.FC = () => {
   return (
-    <RouteContext.Consumer>
-      {({ baseUrl }) => {
-        return (
-          <HeaderContainer>
-            <HeaderElement>
-              <HeaderLink href={`/#/${baseUrl}/`}>Home</HeaderLink>
-            </HeaderElement>
-            <HeaderElement>
-              <HeaderLink href={`/#/${baseUrl}/info/`}>Info</HeaderLink>
-            </HeaderElement>
-          </HeaderContainer>
-        );
-      }}
-    </RouteContext.Consumer>
+    <HeaderContainer>
+      <HeaderElement>
+        <HeaderLink href={Routes.root.link}>Home</HeaderLink>
+      </HeaderElement>
+      <HeaderElement>
+        <HeaderLink href={Routes.info.link}>Info</HeaderLink>
+      </HeaderElement>
+    </HeaderContainer>
   );
 };
