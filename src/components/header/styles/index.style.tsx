@@ -4,7 +4,6 @@ import { HeaderBackground } from './animated-background.style';
 import { LinkBackground } from './animated-link-background.style';
 
 export const HeaderContainer = styled.nav`
-  height: 2em;
   padding: 0.5em;
   display: flex;
   flex-direction: row;

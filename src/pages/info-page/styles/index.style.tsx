@@ -19,6 +19,12 @@ export const Title = styled.h1`
   -webkit-text-fill-color: transparent;
 `;
 
+export const Subtitle = styled.h2`
+  font-size: 2em;
+  font-weight: lighter;
+  text-align: center;
+`;
+
 export const LogoHero = styled.section`
   display: flex;
   justify-content: center;

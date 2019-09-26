@@ -4,7 +4,7 @@ import { Button } from '@lodgify/quarks';
 import NebulaImg from '../../assets/img/nebula.png';
 
 import { GITHUB_URL } from './constants';
-import { Logo, LogoHero, PageContainer, Title } from './styles/index.style';
+import { Logo, LogoHero, PageContainer, Title, Subtitle } from './styles/index.style';
 import { shinifyText } from './utils/index.util';
 
 import { CountContext } from '../../index.reducer';
@@ -24,8 +24,8 @@ export const WelcomePage: React.FC = () => {
           <Logo className={Logo} src={NebulaImg} />
         </a>
       </LogoHero>
-      <Title>{shinifyText(`Hey! Welcome to nebula! Can I get some clicks? Now I have`)}</Title>
-      <p>{count}</p>
+      <Title>{shinifyText(`Hey! Welcome to nebula! Can I get some smiles?`)}</Title>
+      <Subtitle>{`Now we have ${count} smiles!`}</Subtitle>
       <Button
         onClick={() => dispatch({ type: 'increment' })}
         style={{ width: '30%', alignSelf: 'center' }}

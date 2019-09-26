@@ -1,44 +1,19 @@
 import React from 'react';
 import * as ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Route, HashRouter } from 'react-router-dom';
 
-import { Header } from './components/header';
 import { WelcomePage } from './pages/welcome-page';
 import { InfoPage } from './pages/info-page';
-import { GlobalStyle } from './styles/index.style';
+import { Nebula } from './pages/nebula-container';
 import { Routes as RouteHandler } from './routes';
 import { log } from './utils/logger.utils';
 import Manifest from './manifest.json';
 
 import '@lodgify/quarks/build/main.css';
 
-import { CountProvider } from './index.reducer';
-
-export const NebulaBaseApp: React.FC = () => {
-  log(`NEBULA BASE LANDING PAGE LOADED`);
-  return (
-    <CountProvider>
-      <Header />
-      <GlobalStyle />
-      <WelcomePage />
-    </CountProvider>
-  );
-};
-
-export const NebulaBaseInfo: React.FC = () => {
-  log(`NEBULA BASE INFO PAGE LOADED`);
-  return (
-    <CountProvider>
-      <Header />
-      <GlobalStyle />
-      <InfoPage />
-    </CountProvider>
-  );
-};
-
 export let RouteContext = React.createContext({ baseUrl: '' });
 
-const Config: React.FunctionComponent = props => <>{props.children}</>;
+const Config: React.FC = props => <Nebula>{props.children}</Nebula>;
 
 export const Routes = (store?: any) => {
   log(`ULR is: ${window.location.href}`);
@@ -53,15 +28,12 @@ export const Routes = (store?: any) => {
 
   return (
     <RouteContext.Provider value={{ baseUrl: moduleRoute }}>
-      <Router>
-        <Route component={Config}>
-          {process.env.NODE_ENV === 'development' && (
-            <Route path="/" exact component={NebulaBaseApp} />
-          )}
-          <Route path={RouteHandler.root.url} exact component={NebulaBaseApp} />
-          <Route path={RouteHandler.info.url} component={NebulaBaseInfo} />
-        </Route>
-      </Router>
+      <HashRouter>
+        <Config>
+          <Route path={RouteHandler.root.url} exact component={WelcomePage} />
+          <Route path={RouteHandler.info.url} exact component={InfoPage} />
+        </Config>
+      </HashRouter>
     </RouteContext.Provider>
   );
 };
