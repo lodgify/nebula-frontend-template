@@ -6,5 +6,6 @@ module.exports = {
     path.join(__dirname, 'ci', 'semantic'),
     '@semantic-release/release-notes-generator',
     '@semantic-release/github',
+    '@semantic-release/npm',
   ],
 };
