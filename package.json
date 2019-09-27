@@ -1,6 +1,6 @@
 {
   "name": "@lodgify/nebula-frontend-template",
-  "version": "0.1.25",
+  "version": "0.1.26",
   "main": "build/main.js",
   "types": "types/src/index.d.ts",
   "repository": {
@@ -99,13 +99,16 @@
     ]
   },
   "devDependencies": {
+    "@lodgify/quarks": "^37.8.0",
+    "@types/enzyme": "^3.10.3",
     "@types/react-redux": "^7.1.2",
     "@types/redux": "^3.6.0",
     "awesome-typescript-loader": "^5.2.1",
     "emotion": "^10.0.17",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
     "jest-junit": "^8.0.0",
     "prettier": "^1.18.2",
-    "@lodgify/quarks": "^37.8.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "semantic-release": "^16.0.0-beta.24",
@@ -129,7 +132,9 @@
     "setupFiles": [
       "react-app-polyfill/jsdom"
     ],
-    "setupFilesAfterEnv": [],
+    "setupFilesAfterEnv": [
+      "<rootDir>/config/jest/setupTests.js"
+    ],
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
       "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"

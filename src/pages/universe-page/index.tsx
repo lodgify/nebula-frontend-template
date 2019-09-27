@@ -8,7 +8,7 @@ import { Logo, LogoHero, PageContainer, Title, Subtitle } from './styles/index.s
 import { CountContext } from '../../index.reducer';
 
 export const UniversePage: React.FC = () => {
-  const [count, dispatch] = useContext(CountContext);
+  const { count, dispatch } = useContext(CountContext);
   return (
     <PageContainer>
       <LogoHero>

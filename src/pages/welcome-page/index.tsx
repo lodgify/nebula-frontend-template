@@ -10,7 +10,7 @@ import { shinifyText } from './utils/index.util';
 import { CountContext } from '../../index.reducer';
 
 export const WelcomePage: React.FC = () => {
-  const [count, dispatch] = useContext(CountContext);
+  const { count, dispatch } = useContext(CountContext);
 
   return (
     <PageContainer>

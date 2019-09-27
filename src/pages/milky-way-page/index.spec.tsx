@@ -1,10 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { mount } from 'enzyme';
 
 import { MilkyWayPage } from './index';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<MilkyWayPage />, div);
-  ReactDOM.unmountComponentAtNode(div);
+it('renders the heading', () => {
+  const result = mount(<MilkyWayPage />);
+  expect(result).toBeTruthy();
 });

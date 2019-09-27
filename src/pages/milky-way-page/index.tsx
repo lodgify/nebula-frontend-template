@@ -8,7 +8,7 @@ import { CountContext } from '../../index.reducer';
 import { shinifyText } from '../welcome-page/utils/index.util';
 
 export const MilkyWayPage: React.FC = () => {
-  const [count, dispatch] = useContext(CountContext);
+  const { count, dispatch } = useContext(CountContext);
   return (
     <PageContainer>
       <LogoHero>

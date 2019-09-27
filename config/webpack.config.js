@@ -5,7 +5,6 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 require('./env');
 const paths = require('./paths');
-const sassLoader = require('./loaders/sass');
 const otherFilesLoader = require('./loaders/otherFiles');
 const jsLoader = require('./loaders/js');
 const svgLoader = require('./loaders/svg');
@@ -17,7 +16,7 @@ module.exports = {
   devtool: 'source-map',
   target: 'node',
   module: {
-    rules: [...jsLoader(), ...sassLoader(), ...otherFilesLoader(), ...svgLoader()],
+    rules: [...jsLoader(), ...otherFilesLoader(), ...svgLoader()],
   },
   output: {
     path: paths.build,
@@ -29,7 +28,7 @@ module.exports = {
     modules: [paths.src, 'node_modules'],
     extensions: ['.ts', '.tsx', '.js', '.json'],
   },
-  externals: [nodeExternals({ whitelist: [/\.css/i] }), 'react', 'react-dom'],
+  externals: [nodeExternals(), 'react', 'react-dom'],
   plugins: [
     new MiniCssExtractPlugin({ filename: '[name].css' }),
     new webpack.EnvironmentPlugin({ ...process.env }),
