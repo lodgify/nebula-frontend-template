@@ -1,0 +1,21 @@
+{
+  "eslint.enable": true,
+  "eslint.run": "onSave",
+  "editor.formatOnSave": true,
+  "eslint.autoFixOnSave": true,
+  "javascript.validate.enable": false,
+  "typescript.validate.enable": true,
+  "files.exclude": {
+    ".github": true,
+    "**/.DS_Store": true,
+    "**/.git": true,
+    "**/.hg": true,
+    "**/.svn": true,
+    "**/CVS": true,
+    "build": true,
+    "junit.xml": true,
+    "node_modules": true,
+    "public": true,
+    "types": true
+  }
+}

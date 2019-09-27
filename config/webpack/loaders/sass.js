@@ -1,7 +1,7 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const paths = require('../paths');
-const isDevMode = require('../isDevMode');
+const isDevMode = process.env.NODE_ENV === 'development';
 
 module.exports = () => {
   const styleLoader =
@@ -24,9 +24,7 @@ module.exports = () => {
             modules: true,
             importLoaders: 1,
             sourceMap: true,
-            localIdentName: isDevMode
-              ? '[path][name]__[local]--[hash:base64:5]'
-              : undefined,
+            localIdentName: isDevMode ? '[path][name]__[local]--[hash:base64:5]' : undefined,
           },
         },
         {

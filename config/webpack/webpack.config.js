@@ -9,6 +9,8 @@ const otherFilesLoader = require('./loaders/otherFiles');
 const jsLoader = require('./loaders/js');
 const svgLoader = require('./loaders/svg');
 
+require('dotenv').config();
+
 const mode = process.env.NODE_ENV;
 
 module.exports = {

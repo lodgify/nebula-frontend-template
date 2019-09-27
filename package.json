@@ -9,12 +9,13 @@
   },
   "scripts": {
     "build:types": "tsc --declaration --outDir types --emitDeclarationOnly",
-    "build": "rm -r build || true && webpack --config ./config/webpack.config.js --mode production",
-    "dev": "webpack-dev-server --config ./config/webpack.config.dev.js --mode development --open --hot",
+    "build": "rm -r build || true && webpack --config ./config/webpack/webpack.config.js --mode production",
+    "dev": "webpack-dev-server --config ./config/webpack/webpack.config.dev.js --mode development --open --hot",
     "lint:js": "tslint -p . -c tslint.json --format codeFrame",
     "lint": "yarn lint:js",
     "semantic-release": "semantic-release",
-    "test": "jest --env=jsdom --silent"
+    "test": "jest --env=jsdom --silent",
+    "visual": "node ./cypress/scripts/run-cypress"
   },
   "dependencies": {
     "@babel/core": "7.5.5",
@@ -35,7 +36,7 @@
     "camelcase": "^5.2.0",
     "case-sensitive-paths-webpack-plugin": "2.2.0",
     "css-loader": "2.1.1",
-    "dotenv": "6.2.0",
+    "dotenv": "^8.1.0",
     "dotenv-expand": "4.2.0",
     "eslint": "^6.1.0",
     "eslint-config-react-app": "^5.0.1",
@@ -99,14 +100,18 @@
     ]
   },
   "devDependencies": {
+    "@cypress/webpack-preprocessor": "^4.1.0",
     "@lodgify/quarks": "^37.8.0",
     "@types/enzyme": "^3.10.3",
     "@types/react-redux": "^7.1.2",
     "@types/redux": "^3.6.0",
     "awesome-typescript-loader": "^5.2.1",
+    "cypress": "^3.4.1",
     "emotion": "^10.0.17",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
+    "get-port": "^5.0.0",
+    "http-server": "^0.11.1",
     "jest-junit": "^8.0.0",
     "prettier": "^1.18.2",
     "react": "^16.9.0",

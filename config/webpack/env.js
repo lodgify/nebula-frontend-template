@@ -2,7 +2,7 @@
 
 const chalk = require('chalk');
 
-const isDevServer = require('./isDevServer');
+const isDevServer = !!process.argv.find(item => /webpack-dev-server/i.test(item));
 
 console.log('MODE IS ', process.env.NODE_ENV);
 

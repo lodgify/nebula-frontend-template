@@ -2,11 +2,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const paths = require('./paths');
 const sassLoader = require('./loaders/sass');
 
+require('dotenv').config();
+
 module.exports = {
   entry: './src/index.tsx',
   mode: 'development',
   devtool: 'cheap-source-map',
   devServer: {
+    port: process.env.LOCAL_PORT,
     historyApiFallback: true,
   },
   resolve: {
