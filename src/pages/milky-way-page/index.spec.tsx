@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { InfoPage } from './index';
+import { MilkyWayPage } from './index';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<InfoPage />, div);
+  ReactDOM.render(<MilkyWayPage />, div);
   ReactDOM.unmountComponentAtNode(div);
 });

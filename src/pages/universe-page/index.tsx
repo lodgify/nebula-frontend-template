@@ -7,7 +7,7 @@ import { addPreSmile } from '../../utils/index.util';
 import { Logo, LogoHero, PageContainer, Title, Subtitle } from './styles/index.style';
 import { CountContext } from '../../index.reducer';
 
-export const InfoPage: React.FC = () => {
+export const UniversePage: React.FC = () => {
   const [count, dispatch] = useContext(CountContext);
   return (
     <PageContainer>

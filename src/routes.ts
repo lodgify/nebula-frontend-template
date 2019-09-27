@@ -6,10 +6,14 @@ const moduleRoute = `${Manifest.url_entry_point}`;
 export const Routes = {
   root: {
     url: isDevMode ? `/${moduleRoute}` : `/${moduleRoute}`,
-    link: isDevMode ? `/#/${moduleRoute}` : `/${moduleRoute}/`,
+    link: isDevMode ? `/${moduleRoute}` : `/${moduleRoute}/`,
   },
-  info: {
-    url: isDevMode ? `/${moduleRoute}/info` : `/${moduleRoute}/info`,
-    link: isDevMode ? `/#/${moduleRoute}/info` : `/${moduleRoute}/info`,
+  universe: {
+    url: isDevMode ? `/${moduleRoute}/universe` : `/${moduleRoute}/universe`,
+    link: isDevMode ? `/${moduleRoute}/universe` : `/${moduleRoute}/universe`,
+  },
+  milky_way: {
+    url: isDevMode ? `/${moduleRoute}/milky-way` : `/${moduleRoute}/milky-way`,
+    link: isDevMode ? `/${moduleRoute}/milky-way` : `/${moduleRoute}/milky-way`,
   },
 };

@@ -24,10 +24,3 @@ export const HeaderElement = styled.div`
     ${LinkBackground}
   }
 `;
-
-export const HeaderLink = styled.a`
-  width: 100%;
-  text-align: center;
-  font-style: italic;
-  text-decoration: none !important;
-`;

@@ -10,12 +10,13 @@ export const Header: React.FC = () => {
   return (
     <HeaderContainer>
       <Button type={Button.Type.Primary}>
-        {/* <HeaderLink href={Routes.root.link}>Home</HeaderLink> */}
         <Link to={Routes.root.link}>Home</Link>
       </Button>
       <Button type={Button.Type.Danger}>
-        {/* <HeaderLink href={Routes.info.link}>Info</HeaderLink> */}
-        <Link to={Routes.info.link}>Info</Link>
+        <Link to={Routes.universe.link}>Info</Link>
+      </Button>
+      <Button>
+        <Link to={Routes.milky_way.link}>Milky Way</Link>
       </Button>
     </HeaderContainer>
   );
