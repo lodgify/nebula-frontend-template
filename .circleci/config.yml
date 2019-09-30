@@ -46,11 +46,7 @@ jobs:
           at: ~/
       - run:
           name: Test
-          command: yarn test --maxWorkers 2 --ci --testResultsProcessor="jest-junit"
-          environment:
-            JEST_JUNIT_OUTPUT: "test-results/Jest/js-test-results.xml"
-      - store_test_results:
-          path: test-results
+          command: yarn test --maxWorkers 2 --ci
 
   visual-build:
     executor: nebula-executor
