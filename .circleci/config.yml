@@ -15,14 +15,12 @@ jobs:
     executor: nebula-executor
     steps:
       - checkout
-      - restore_cache:
-          name: Restore Yarn cache
-          keys:
-            - yarn-packages-{{ checksum "yarn.lock" }}
       - run:
           name: Install dependencies
           command: |
             echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
+            rm -rf node_modules
+            yarn cache clean
             yarn install --frozen-lockfile
       - save_cache:
           name: Save Yarn cache
@@ -46,7 +44,7 @@ jobs:
           at: ~/
       - run:
           name: Test
-          command: yarn test --maxWorkers 2 --ci
+          command: yarn test --maxWorkers 2 --ci --testResultsProcessor=jest-junit"
 
   visual-build:
     executor: nebula-executor
