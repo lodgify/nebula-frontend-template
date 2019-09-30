@@ -20,7 +20,7 @@ export const Routes = () => {
   log(`ULR is: ${window.location.href}`);
   log(`Available route: ${RouteHandler.root.url}`);
   log(`Available route: ${RouteHandler.universe.url}`);
-  log(`Available route: ${RouteHandler.milky_way.url}`);
+  log(`Available route: ${RouteHandler.milkyWay.url}`);
 
   const moduleRoute = `${Manifest.url_entry_point}`;
   RouteContext = React.createContext({
@@ -34,7 +34,7 @@ export const Routes = () => {
           <Switch>
             <Route path={RouteHandler.root.url} exact component={WelcomePage} />
             <Route path={RouteHandler.universe.url} exact component={UniversePage} />
-            <Route path={RouteHandler.milky_way.url} exact component={MilkyWayPage} />
+            <Route path={RouteHandler.milkyWay.url} exact component={MilkyWayPage} />
             <Route path="/" component={WelcomePage} />
             <Redirect to="/" />
           </Switch>

@@ -12,7 +12,7 @@ export const Routes = {
     url: isDevMode ? `/${moduleRoute}/universe` : `/${moduleRoute}/universe`,
     link: isDevMode ? `/${moduleRoute}/universe` : `/${moduleRoute}/universe`,
   },
-  milky_way: {
+  milkyWay: {
     url: isDevMode ? `/${moduleRoute}/milky-way` : `/${moduleRoute}/milky-way`,
     link: isDevMode ? `/${moduleRoute}/milky-way` : `/${moduleRoute}/milky-way`,
   },

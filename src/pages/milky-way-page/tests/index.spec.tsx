@@ -1,9 +1,9 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import { WelcomePage } from './index';
+import { MilkyWayPage } from '../index';
 
 it('renders the heading', () => {
-  const result = mount(<WelcomePage />);
+  const result = mount(<MilkyWayPage />);
   expect(result).toBeTruthy();
 });
