@@ -5,6 +5,10 @@ executors:
     docker:
       - image: circleci/node:10
     working_directory: ~/repo
+  cypress:
+    docker:
+      - image: cypress/base:10
+    working_directory: ~/repo
 
 jobs:
   dependencies:
@@ -47,7 +51,7 @@ jobs:
           path: test-results
 
   visual-build:
-    executor: my-executor
+    executor: nebula-executor
     steps:
       - attach_workspace:
           at: ~/
