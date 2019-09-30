@@ -19,6 +19,8 @@ describe('Nebula main test', () => {
     it('Loads the main Nebula page', () => {
       cy.visit(`/#${Routes.root.url}`);
       cy.url().should('include', '/nebula');
+
+      cy.percySnapshot();
     });
 
     it('Click in the +1 button increases the counter from 0 to 1', () => {
