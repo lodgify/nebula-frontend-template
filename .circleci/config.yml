@@ -18,7 +18,7 @@ jobs:
       - restore_cache:
           name: Restore cache
           keys:
-            - yarn-packages-$CACHE_VERSION-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-packages-${CACHE_VERSION}-{{ .Branch }}-{{ checksum "yarn.lock" }}
             - yarn-packages-${CACHE_VERSION}-{{ .Branch }}-
             - yarn-packages-v1-
 
