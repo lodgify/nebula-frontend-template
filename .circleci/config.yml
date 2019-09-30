@@ -5,17 +5,16 @@ executors:
     docker:
       - image: circleci/node:10
     working_directory: ~/repo
-  cypress:
-    docker:
-      - image: cypress/base:10
-    working_directory: ~/repo
 
 jobs:
   dependencies:
     executor: nebula-executor
     steps:
       - checkout
-
+      - restore_cache:
+          name: Restore Yarn cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
       - run:
           name: Install dependencies
           command: |
@@ -66,31 +65,6 @@ jobs:
           paths:
             - repo/build
 
-  visual:
-    executor: cypress
-    steps:
-      - attach_workspace:
-          at: ~/
-      - run:
-          name: Verify that Cypress can run
-          command: npx cypress verify
-      - run:
-          name: Cypress & Percy
-          command: yarn percy exec -- yarn visual run --record false --key ${CYPRESS_TOKEN} --config video=true
-
-  build:
-    executor: nebula-executor
-    steps:
-      - attach_workspace:
-          at: ~/
-      - run:
-          name: Build
-          command: yarn run build
-      - persist_to_workspace:
-          root: .
-          paths:
-            - build
-
   semantic-release:
     executor: nebula-executor
     steps:
@@ -109,14 +83,7 @@ workflows:
       - test:
           requires:
             - dependencies
-      - visual-build:
-          requires:
-            - dependencies
-      - visual:
-          context: global
-          requires:
-            - dependencies
-            - visual-build
+
       - build:
           requires:
             - dependencies
