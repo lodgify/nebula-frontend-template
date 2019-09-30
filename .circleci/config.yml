@@ -16,17 +16,21 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          name: Restore Yarn cache
+          name: Restore cache
           keys:
-            - yarn-packages-{{ checksum "yarn.lock" }}
+            - yarn-packages-${CACHE_VERSION}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-packages-${CACHE_VERSION}-{{ .Branch }}-
+            - yarn-packages-v1-
+
       - run:
           name: Install dependencies
           command: |
             echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
             yarn install --frozen-lockfile
+
       - save_cache:
           name: Save Yarn cache
-          key: yarn-packages-{{ checksum "yarn.lock" }}
+          key: yarn-packages-${CACHE_VERSION}-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
             - ~/.cache/Cypress
@@ -47,10 +51,6 @@ jobs:
       - run:
           name: Test
           command: yarn test --maxWorkers 2 --ci --testResultsProcessor="jest-junit"
-          environment:
-            JEST_JUNIT_OUTPUT: 'test-results/Jest/js-test-results.xml'
-      - store_test_results:
-          path: test-results
 
   visual-build:
     executor: nebula-executor
@@ -63,11 +63,12 @@ jobs:
           environment:
             NODE_ENV: development
             LOCAL_DOMAIN: localhost
-            LOCAL_PORT: 9000
+            LOCAL_PORT: "9000"
+
       - persist_to_workspace:
-          root: ~/
+          root: .
           paths:
-            - repo/build
+            - build
 
   visual:
     executor: cypress
