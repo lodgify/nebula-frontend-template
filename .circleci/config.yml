@@ -15,6 +15,10 @@ jobs:
     executor: nebula-executor
     steps:
       - checkout
+      - restore_cache:
+          name: Restore cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
       - run:
           name: Install dependencies
           command: |
@@ -25,6 +29,7 @@ jobs:
           key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
+            - ~/.cache/Cypress
 
       - persist_to_workspace:
           root: ~/
@@ -32,6 +37,7 @@ jobs:
             - repo
             - .ssh/known_hosts
             - .npmrc
+            - .cache/Cypress
 
   test:
     executor: nebula-executor
