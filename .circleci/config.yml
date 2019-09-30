@@ -59,7 +59,7 @@ jobs:
           at: ~/
       - run:
           name: Build the app
-          command: yarn build
+          command: npm build
           environment:
             NODE_ENV: development
             LOCAL_DOMAIN: localhost
@@ -88,7 +88,7 @@ jobs:
           at: ~/
       - run:
           name: Build
-          command: yarn build
+          command: npm build
       - persist_to_workspace:
           root: .
           paths:
