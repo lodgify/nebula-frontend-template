@@ -24,8 +24,7 @@ exports.runCypress = async ({ baseUrl, args = ['run'] }) => {
     tests.on('close', (code, signal) => {
       console.log(`Tests finished!`);
       if (code) {
-        const error = 'Cypress: ' + signal + ', exit code ' + code;
-        throw new Error(error);
+        throw new Error(`Cypress: ${signal}, exit code ${code}`);
       }
 
       resolve();

@@ -1,5 +1,4 @@
 /// <reference types="Cypress" />
-/// <reference types="@percy/cypress" />
 
 import { Routes } from '../../src/routes';
 import { HEADER_PAGE_OBJECT } from '../../src/components/header/tests/index.page';

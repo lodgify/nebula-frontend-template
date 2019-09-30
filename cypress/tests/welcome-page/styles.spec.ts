@@ -1,5 +1,4 @@
 /// <reference types="Cypress" />
-/// <reference types="@percy/cypress" />
 
 import { Routes } from '../../../src/routes';
 import { WELCOME_PAGE_OBJECT } from '../../../src/pages/welcome-page/tests/index.page';
@@ -28,8 +27,6 @@ describe('Welcom Page Style Test', () => {
   it('Loads the Welcome page', () => {
     cy.visit(`/#${Routes.root.url}`);
     cy.url().should('include', '/nebula');
-
-    cy.percySnapshot();
   });
 
   it('Subtitle should have the correct font-size', () => {
