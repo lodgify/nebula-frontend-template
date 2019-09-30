@@ -15,10 +15,7 @@ jobs:
     executor: nebula-executor
     steps:
       - checkout
-      - restore_cache:
-          name: Restore Yarn cache
-          keys:
-            - yarn-packages-{{ checksum "yarn.lock" }}
+
       - run:
           name: Install dependencies
           command: |
