@@ -18,7 +18,7 @@ jobs:
       - restore_cache:
           name: Restore cache
           keys:
-            - yarn-packages-{{ checksum "yarn.lock" }}
+            - ${CACHE_VERSION}
       - run:
           name: Install dependencies
           command: |
@@ -26,7 +26,7 @@ jobs:
             yarn install --frozen-lockfile
       - save_cache:
           name: Save Yarn cache
-          key: yarn-packages-{{ checksum "yarn.lock" }}
+          key: ${CACHE_VERSION}
           paths:
             - ~/.cache/yarn
             - ~/.cache/Cypress
