@@ -19,15 +19,12 @@ jobs:
           name: Install dependencies
           command: |
             echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
-            rm -rf node_modules
-            yarn cache clean
             yarn install --frozen-lockfile
       - save_cache:
           name: Save Yarn cache
           key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
-            - ~/.cache/Cypress
 
       - persist_to_workspace:
           root: ~/
@@ -35,7 +32,6 @@ jobs:
             - repo
             - .ssh/known_hosts
             - .npmrc
-            - .cache/Cypress
 
   test:
     executor: nebula-executor
@@ -44,7 +40,7 @@ jobs:
           at: ~/
       - run:
           name: Test
-          command: yarn test --maxWorkers 2 --ci --testResultsProcessor=jest-junit"
+          command: yarn test --maxWorkers 2 --ci --testResultsProcessor=jest-junit
 
   visual-build:
     executor: nebula-executor
