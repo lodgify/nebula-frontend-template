@@ -48,22 +48,18 @@ jobs:
       - store_test_results:
           path: test-results
 
-  visual-build:
+  build:
     executor: nebula-executor
     steps:
       - attach_workspace:
           at: ~/
       - run:
-          name: Build the app
+          name: Build
           command: yarn run build
-          environment:
-            NODE_ENV: development
-            LOCAL_DOMAIN: localhost
-            LOCAL_PORT: 9000
       - persist_to_workspace:
-          root: ~/
+          root: .
           paths:
-            - repo/build
+            - build
 
   semantic-release:
     executor: nebula-executor
@@ -83,7 +79,6 @@ workflows:
       - test:
           requires:
             - dependencies
-
       - build:
           requires:
             - dependencies
