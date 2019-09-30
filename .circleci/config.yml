@@ -5,6 +5,10 @@ executors:
     docker:
       - image: circleci/node:10
     working_directory: ~/repo
+  cypress:
+    docker:
+      - image: cypress/base:10
+    working_directory: ~/repo
 
 jobs:
   dependencies:
@@ -47,6 +51,35 @@ jobs:
             JEST_JUNIT_OUTPUT: 'test-results/Jest/js-test-results.xml'
       - store_test_results:
           path: test-results
+  visual:
+    executor: cypress
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Verify that Cypress can run
+          command: npx cypress verify
+      - run:
+          name: Cypress & Percy
+          command: yarn percy exec -- yarn visual run --record false --key ${CYPRESS_TOKEN} --config video=true
+
+  visual-build:
+    executor: nebula-executor
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Build the app
+          command: yarn run build
+          environment:
+            NODE_ENV: development
+            LOCAL_DOMAIN: localhost
+            LOCAL_PORT: 9000
+
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - repo/build
 
   build:
     executor: nebula-executor
@@ -79,6 +112,14 @@ workflows:
       - test:
           requires:
             - dependencies
+      - visual-build:
+          requires:
+            - dependencies
+      - visual:
+          context: global
+          requires:
+            - dependencies
+            - visual-build
       - build:
           requires:
             - dependencies
