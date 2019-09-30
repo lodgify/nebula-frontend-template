@@ -107,13 +107,13 @@ workflows:
           requires:
             - dependencies
       - visual-build:
-        requires:
-          - dependencies
+          requires:
+            - dependencies
       - visual:
-        context: global
-        requires:
-          - dependencies
-          - visual-build
+          context: global
+          requires:
+            - dependencies
+            - visual-build
       - build:
           requires:
             - dependencies
