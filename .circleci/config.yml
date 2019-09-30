@@ -46,6 +46,35 @@ jobs:
       - store_test_results:
           path: test-results
 
+  visual-build:
+    executor: my-executor
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Build the app
+          command: yarn build
+          environment:
+            NODE_ENV: development
+            LOCAL_DOMAIN: localhost
+            LOCAL_PORT: 9000
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - repo/build
+
+  visual:
+    executor: cypress
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Verify that Cypress can run
+          command: npx cypress verify
+      - run:
+          name: Cypress & Percy
+          command: yarn percy exec -- yarn visual run --record false --key ${CYPRESS_TOKEN} --config video=true
+
   build:
     executor: nebula-executor
     steps:
@@ -77,6 +106,14 @@ workflows:
       - test:
           requires:
             - dependencies
+      - visual-build:
+        requires:
+          - dependencies
+      - visual:
+        context: global
+        requires:
+          - dependencies
+          - visual-build
       - build:
           requires:
             - dependencies
