@@ -29,6 +29,7 @@ jobs:
           key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
+            - ~/.cache/Cypress
 
       - persist_to_workspace:
           root: ~/
@@ -36,6 +37,7 @@ jobs:
             - repo
             - .ssh/known_hosts
             - .npmrc
+            - .cache/Cypress
 
   test:
     executor: nebula-executor
