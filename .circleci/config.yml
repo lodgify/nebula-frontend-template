@@ -50,7 +50,7 @@ jobs:
           at: ~/
       - run:
           name: Test
-          command: yarn test --maxWorkers 2 --ci --reporters=default --reporters=jest-junit
+          command: yarn test --maxWorkers 2 --ci --testResultsProcessor="jest-junit"
 
   visual-build:
     executor: nebula-executor
