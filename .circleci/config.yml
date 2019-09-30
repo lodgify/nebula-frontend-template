@@ -67,12 +67,12 @@ jobs:
           environment:
             NODE_ENV: development
             LOCAL_DOMAIN: localhost
-            LOCAL_PORT: "9000"
+            LOCAL_PORT: 9000
 
       - persist_to_workspace:
           root: .
           paths:
-            - build
+            - public
 
   visual:
     executor: cypress
