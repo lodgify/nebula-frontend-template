@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build:types": "tsc --declaration --outDir types --emitDeclarationOnly",
-    "build": "rm -r build || true && webpack --config ./config/webpack/webpack.config.js --mode production",
+    "build": "webpack --config ./config/webpack/webpack.config.js --mode production",
     "dev": "webpack-dev-server --config ./config/webpack/webpack.config.dev.js --mode development --open --hot",
     "lint:js": "tslint -p . -c tslint.json --format codeFrame",
     "lint": "yarn lint:js",
