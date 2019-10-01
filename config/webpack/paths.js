@@ -11,5 +11,5 @@ module.exports = {
   root,
   build: resolveApp('build'),
   src: resolveApp('src'),
-  dev: resolveApp('public'),
+  dev: resolveApp('dist'),
 };

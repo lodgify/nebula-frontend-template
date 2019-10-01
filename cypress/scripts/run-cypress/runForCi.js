@@ -27,7 +27,7 @@ exports.runForCi = async () => {
 };
 
 const startLocalServer = async ({ port, serverUrl }) => {
-  const dirAbsolute = path.join(rootDir, 'public');
+  const dirAbsolute = path.join(rootDir, 'dist');
   const dir = path.relative(process.cwd(), dirAbsolute);
 
   const server = httpServer.createServer({ root: dir });
