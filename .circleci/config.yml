@@ -62,12 +62,8 @@ jobs:
       - attach_workspace:
           at: ~/
       - run:
-          name: Build the app
-          command: yarn build
-          environment:
-            NODE_ENV: development
-            LOCAL_DOMAIN: localhost
-            LOCAL_PORT: 9000
+          name: Building the app for testing
+          command: yarn visual:build
 
       - persist_to_workspace:
           root: .
