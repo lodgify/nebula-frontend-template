@@ -144,32 +144,28 @@ workflows:
     jobs:
       - dependencies:
           context: global
-          requires:
-            - lint
       - lint:
           requires:
             - dependencies
       - test:
           requires:
-            - dependencies
+            - lint
+      - build-types:
+          requires:
+            - lint
       - visual-build:
           requires:
-            - dependencies
+            - lint
       - visual:
           context: global
           requires:
-            - dependencies
             - visual-build
-      - build-types:
-          requires:
-            - dependencies
       - build:
           requires:
-            - build-types
+            - visual
       - semantic-release:
           context: global
           requires:
-            - dependencies
             - test
             - build
             - visual-build
