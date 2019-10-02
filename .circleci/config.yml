@@ -100,7 +100,7 @@ jobs:
       - persist_to_workspace:
           root: ~/
           paths:
-            - build
+            - repo/build
 
   semantic-release:
     executor: nebula-executor
