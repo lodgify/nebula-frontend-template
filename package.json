@@ -16,7 +16,7 @@
     "semantic-release": "semantic-release",
     "test": "jest --env=jsdom --silent",
     "visual:build": "rm -r dist ||true && webpack --config ./config/webpack/webpack.config.dev.js --mode development",
-    "visual": "export BABEL_ENV = production node ./cypress/scripts/run-cypress"
+    "visual": "BABEL_ENV=production node ./cypress/scripts/run-cypress"
   },
   "dependencies": {
     "@babel/core": "7.5.5",
