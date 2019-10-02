@@ -98,7 +98,7 @@ jobs:
           name: Build
           command: yarn build
       - persist_to_workspace:
-          root: .
+          root: working_directory
           paths:
             - build
 
