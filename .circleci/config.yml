@@ -79,7 +79,7 @@ jobs:
           name: Verify that Cypress can run
           command: npx cypress verify
       - run:
-          name: Verify there is a built version of the module
+          name: Verify if there is a built version of the module
           command: cd public && ls -1 | wc -l | (read count; if [ $count > 1 ]; then exit 0; else exit 1; fi)
       - run:
           name: Cypress & Percy

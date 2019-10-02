@@ -28,8 +28,6 @@ describe('Welcom Page Style Test', () => {
   it('Loads the Welcome page', () => {
     cy.visit(`/#${Routes.root.url}`);
     cy.url().should('include', '/nebula');
-
-    cy.percySnapshot();
   });
 
   it('Subtitle should have the correct font-size', () => {
