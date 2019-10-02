@@ -11,14 +11,6 @@ executors:
     working_directory: ~/repo
 
 jobs:
-  lint:
-    executor: nebula-executor
-    steps:
-      - checkout
-      - run:
-          name: Lint
-          command: yarn lint
-
   dependencies:
     executor: nebula-executor
     steps:
@@ -50,6 +42,15 @@ jobs:
             - .ssh/known_hosts
             - .npmrc
             - .cache/Cypress
+
+  lint:
+    executor: nebula-executor
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Lint
+          command: yarn lint
 
   test:
     executor: nebula-executor
@@ -141,11 +142,13 @@ workflows:
   version: 2
   workflow:
     jobs:
-      - lint
       - dependencies:
           context: global
           requires:
             - lint
+      - lint:
+          requires:
+            - dependencies
       - test:
           requires:
             - dependencies
