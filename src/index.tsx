@@ -1,16 +1,15 @@
+import '@lodgify/quarks/build/main.css';
 import React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Route, HashRouter, Switch, Redirect } from 'react-router-dom';
+import { HashRouter, Redirect, Route, Switch } from 'react-router-dom';
 
-import { WelcomePage } from './pages/welcome-page';
-import { UniversePage } from './pages/universe-page';
+import Manifest from './manifest.json';
 import { MilkyWayPage } from './pages/milky-way-page';
 import { Nebula } from './pages/nebula-container';
+import { UniversePage } from './pages/universe-page';
+import { WelcomePage } from './pages/welcome-page';
 import { Routes as RouteHandler } from './routes';
 import { log } from './utils/logger.utils';
-import Manifest from './manifest.json';
-
-import '@lodgify/quarks/build/main.css';
 
 export let RouteContext = React.createContext({ baseUrl: '' });
 

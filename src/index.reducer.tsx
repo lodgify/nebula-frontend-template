@@ -1,4 +1,4 @@
-import React, { useReducer, useContext } from 'react';
+import React, { useReducer } from 'react';
 
 const initialState = 0;
 const reducer = (state: number, action: any) => {
@@ -20,29 +20,3 @@ export const CountProvider: React.FC = ({ children }) => {
   const contextValue = useReducer(reducer, initialState);
   return <CountContext.Provider value={contextValue}>{children}</CountContext.Provider>;
 };
-
-const Counter = () => {
-  const [count, dispatch] = useContext(CountContext);
-
-  return (
-    <div>
-      {count}
-      <button onClick={() => dispatch({ type: 'increment' })}>+1</button>
-      <button onClick={() => dispatch({ type: 'decrement' })}>-1</button>
-      <button onClick={() => dispatch({ type: 'set', count: 0 })}>reset</button>
-    </div>
-  );
-};
-
-export const Sample = () => (
-  <>
-    <CountProvider>
-      <Counter />
-      <Counter />
-    </CountProvider>
-    <CountProvider>
-      <Counter />
-      <Counter />
-    </CountProvider>
-  </>
-);

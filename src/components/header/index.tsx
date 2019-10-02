@@ -1,11 +1,11 @@
+import { Button } from '@lodgify/quarks';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from '@lodgify/quarks';
-
-import { HEADER_PAGE_OBJECT } from './tests/index.page';
-import { HeaderContainer } from './styles/index.style';
 
 import { Routes } from '../../routes';
+
+import { HeaderContainer } from './styles/index.style';
+import { HEADER_PAGE_OBJECT } from './tests/index.page';
 
 export const Header: React.FC = () => {
   return (

@@ -43,6 +43,15 @@ jobs:
             - .npmrc
             - .cache/Cypress
 
+  lint:
+    executor: nebula-executor
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Lint
+          command: yarn lint
+
   test:
     executor: nebula-executor
     steps:
@@ -89,6 +98,19 @@ jobs:
           name: Cypress execution
           command: yarn visual run --record false --key ${CYPRESS_TOKEN} --config video=true
 
+  build-types:
+    executor: nebula-executor
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Build module types
+          command: yarn build:types
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - repo/types
+
   build:
     executor: nebula-executor
     steps:
@@ -120,8 +142,11 @@ workflows:
   version: 2
   workflow:
     jobs:
+      - lint
       - dependencies:
           context: global
+          requires:
+            - lint
       - test:
           requires:
             - dependencies
@@ -133,9 +158,12 @@ workflows:
           requires:
             - dependencies
             - visual-build
-      - build:
+      - build-types:
           requires:
             - dependencies
+      - build:
+          requires:
+            - build-types
       - semantic-release:
           context: global
           requires:

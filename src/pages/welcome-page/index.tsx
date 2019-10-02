@@ -1,14 +1,13 @@
-import React, { useContext } from 'react';
 import { Button } from '@lodgify/quarks';
+import React, { useContext } from 'react';
 
 import NebulaImg from '../../assets/img/nebula.png';
+import { CountContext } from '../../index.reducer';
 
 import { GITHUB_URL } from './constants';
+import { Logo, LogoHero, PageContainer, Subtitle, Title } from './styles/index.style';
 import { WELCOME_PAGE_OBJECT } from './tests/index.page';
-import { Logo, LogoHero, PageContainer, Title, Subtitle } from './styles/index.style';
 import { shinifyText } from './utils/index.util';
-
-import { CountContext } from '../../index.reducer';
 
 export const WelcomePage: React.FC = () => {
   const context = useContext(CountContext);

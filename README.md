@@ -2,11 +2,14 @@
 
 # Lodgify Nebula
 
-WIP!
+## Recommended Plugins
+
+- TSLint `ms-vscode.vscode-typescript-tslint-plugin`
 
 ## Contributing.
 
 WIP!
 
 ## Trigger CircleCI
+
 One, Two, Three

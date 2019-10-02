@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
 import { Button } from '@lodgify/quarks';
+import React, { useContext } from 'react';
 
 import NebulaFlat from '../../assets/img/nebula-flat.png';
 import { CountContext } from '../../index.reducer';
 import { addPreSmile } from '../../utils/index.util';
 
-import { Logo, LogoHero, PageContainer, Title, Subtitle } from './styles/index.style';
+import { Logo, LogoHero, PageContainer, Subtitle, Title } from './styles/index.style';
 import { UNIVERSE_PAGE_OBJECT } from './tests/index.page';
 
 export const UniversePage: React.FC = () => {

@@ -1,12 +1,12 @@
-import React, { useContext } from 'react';
 import { Button } from '@lodgify/quarks';
+import React, { useContext } from 'react';
 
 import NebulaBlue from '../../assets/img/nebula-blue.png';
-
-import { MILKY_WAY_PAGE_OBJECT } from './tests/index.page';
-import { Logo, LogoHero, PageContainer, Title, Subtitle } from './styles/index.style';
 import { CountContext } from '../../index.reducer';
 import { shinifyText } from '../welcome-page/utils/index.util';
+
+import { Logo, LogoHero, PageContainer, Subtitle, Title } from './styles/index.style';
+import { MILKY_WAY_PAGE_OBJECT } from './tests/index.page';
 
 export const MilkyWayPage: React.FC = () => {
   const context = useContext(CountContext);
