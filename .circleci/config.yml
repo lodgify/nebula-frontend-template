@@ -70,7 +70,7 @@ jobs:
           command: cd dist && ls
 
       - persist_to_workspace:
-          root: working_directory
+          root: ~/
           paths:
             - repo/dist
 
@@ -98,7 +98,7 @@ jobs:
           name: Build
           command: yarn build
       - persist_to_workspace:
-          root: working_directory
+          root: ~/
           paths:
             - build
 
