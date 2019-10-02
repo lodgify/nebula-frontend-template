@@ -70,9 +70,9 @@ jobs:
           command: cd dist && ls
 
       - persist_to_workspace:
-          root: ./
+          root: working_directory
           paths:
-            - dist
+            - repo/dist
 
   visual:
     executor: cypress
