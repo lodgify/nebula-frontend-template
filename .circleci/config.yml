@@ -163,9 +163,8 @@ workflows:
       - build:
           requires:
             - visual
+            - test
       - semantic-release:
           context: global
           requires:
-            - test
             - build
-            - visual-build
