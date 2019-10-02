@@ -80,7 +80,7 @@ jobs:
           command: npx cypress verify
       - run:
           name: Verify if there is a built version of the module
-          command: cd public && ls -1 | wc -l | (read count; if [ $count > 1 ]; then exit 0; else exit 1; fi)
+          command: cd dist && ls -1 | wc -l | (read count; if [ $count > 1 ]; then echo "Build verified." && exit 0; else echo "There is no build available." && exit 1; fi)
       - run:
           name: Cypress
           command: yarn visual run --record false --key ${CYPRESS_TOKEN} --config video=true

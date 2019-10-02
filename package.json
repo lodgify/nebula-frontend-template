@@ -15,7 +15,7 @@
     "lint": "yarn lint:js",
     "semantic-release": "semantic-release",
     "test": "jest --env=jsdom --silent",
-    "visual:build": "webpack --config ./config/webpack/webpack.config.dev.js --mode development",
+    "visual:build": "rm -r dist ||true && webpack --config ./config/webpack/webpack.config.dev.js --mode development",
     "visual": "node ./cypress/scripts/run-cypress"
   },
   "dependencies": {
