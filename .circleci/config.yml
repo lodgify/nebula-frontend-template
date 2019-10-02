@@ -68,7 +68,7 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
-            - public
+            - dist
 
   visual:
     executor: cypress
@@ -82,8 +82,8 @@ jobs:
           name: Verify if there is a built version of the module
           command: cd public && ls -1 | wc -l | (read count; if [ $count > 1 ]; then exit 0; else exit 1; fi)
       - run:
-          name: Cypress & Percy
-          command: yarn percy exec -- yarn visual run --record false --key ${CYPRESS_TOKEN} --config video=true
+          name: Cypress
+          command: yarn visual run --record false --key ${CYPRESS_TOKEN} --config video=true
 
   build:
     executor: nebula-executor
