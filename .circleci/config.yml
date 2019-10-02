@@ -65,8 +65,12 @@ jobs:
           name: Building the app for testing
           command: yarn visual:build
 
+      - run:
+          name: TEST
+          command: ls
+
       - persist_to_workspace:
-          root: ~/
+          root: .
           paths:
             - dist
 
