@@ -83,7 +83,7 @@ jobs:
           paths:
             - repo/dist
 
-  visual:
+  visual-tests:
     executor: cypress
     steps:
       - attach_workspace:
@@ -156,13 +156,13 @@ workflows:
       - visual-build:
           requires:
             - lint
-      - visual:
+      - visual-tests:
           context: global
           requires:
             - visual-build
       - build:
           requires:
-            - visual
+            - visual-tests
             - test
       - semantic-release:
           context: global
